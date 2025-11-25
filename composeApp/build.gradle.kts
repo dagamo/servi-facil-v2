@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -30,39 +29,17 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-            
-            // Ktor Client para Android
-            implementation(libs.ktor.client.okhttp)
         }
         commonMain.dependencies {
+            implementation(project(":core:network"))
+            implementation(project(":features:auth"))
+            
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            implementation(libs.androidx.lifecycle.viewmodelCompose)
-            implementation(libs.androidx.lifecycle.runtimeCompose)
-            
-            // Supabase
-            implementation(libs.supabase.postgrest)
-            implementation(libs.supabase.auth)
-            implementation(libs.supabase.realtime)
-            implementation(libs.supabase.storage)
-            implementation(libs.supabase.functions)
-            
-            // Ktor Client
-            implementation(libs.ktor.client.core)
-            implementation(libs.ktor.client.content.negotiation)
-            implementation(libs.ktor.serialization.kotlinx.json)
-        }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
-        }
-        
-        iosMain.dependencies {
-            // Ktor Client para iOS
-            implementation(libs.ktor.client.darwin)
         }
     }
 }
@@ -92,8 +69,4 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-}
-
-dependencies {
-    debugImplementation(compose.uiTooling)
 }
