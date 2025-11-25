@@ -44,6 +44,13 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             
+            // Supabase
+            implementation(libs.supabase.postgrest)
+            implementation(libs.supabase.auth)
+            implementation(libs.supabase.realtime)
+            implementation(libs.supabase.storage)
+            implementation(libs.supabase.functions)
+            
             // Ktor Client
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.content.negotiation)
